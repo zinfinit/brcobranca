@@ -1,5 +1,7 @@
 = brcobranca
 
+{<img src="https://travis-ci.org/brodock/brcobranca.png" alt="Build Status" />}[https://travis-ci.org/brodock/brcobranca]
+
 * http://rubygems.org/gems/brcobranca
 
 == EXEMPLO
