@@ -6,5 +6,6 @@ gemspec
 gem "rake"
 
 group :test do
-  gem "rspec",      :require => false
+  gem 'coveralls', require: false
+  gem "rspec", require: false
 end

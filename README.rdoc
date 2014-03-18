@@ -1,6 +1,7 @@
 = brcobranca
 
 {<img src="https://travis-ci.org/brodock/brcobranca.png" alt="Build Status" />}[https://travis-ci.org/brodock/brcobranca]
+{<img src="https://coveralls.io/repos/brodock/brcobranca/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/brodock/brcobranca]
 
 * http://rubygems.org/gems/brcobranca
 
