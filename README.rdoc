@@ -49,35 +49,17 @@ Veja a documentação da versão atual em http://rubydoc.info/gems/brcobranca e 
 
 == REQUISITOS
 
-* rghost >= 0.8
-* rghost_barcode >= 0.9
-* parseline >= 1.0.3
+É necessário ter os seguintes softwares instalados na máquina:
+
 * GhostScript > 8.0
 
 == INSTALAÇÃO
 
 * sudo gem install brcobranca
 
-== FONTES
-
-* http://github.com/kivanio/brcobranca/tree/master
-
 == WIKI
 
 * http://wiki.github.com/kivanio/brcobranca
-
-== PROBLEMAS? QUERENDO MAIS?
-
-Informe em http://github.com/kivanio/brcobranca/issues
-
-== Gostou?
-
-Recomende-nos no http://www.workingwithrails.com/recommendation/new/person/5679-kivanio-pereira-barbosa
-
-== APOIO
-
-{RubyMine}[http://www.jetbrains.com/ruby/features?utm_source=RubyMineUser&utm_medium=Banner&utm_campaign=RubyMine]
-http://www.jetbrains.com/ruby/features/ruby_banners/ruby1/ruby468x60_rubin.gif
 
 == LICENÇA
 
