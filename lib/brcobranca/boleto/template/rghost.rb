@@ -227,7 +227,7 @@ module Brcobranca
           doc.show "#{boleto.pagador_endereco}"
 
           # CPF/CNPJ
-          doc.moveto :x => '16.5 cm', :y => '9.2 cm'
+          doc.moveto :x => '16.5 cm', :y => '9.15 cm'
           doc.show boleto.pagador_documento.formata_documento if boleto.pagador_documento
           #FIM Segunda parte do BOLETO
         end
