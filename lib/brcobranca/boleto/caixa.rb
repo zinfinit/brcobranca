@@ -110,6 +110,15 @@ module Brcobranca
         "#{campo_livre}#{campo_livre.modulo11_2to9_caixa}"
       end
 
+      def informacoes_sac
+        texto = "<bold>SAC CAIXA:</bold> 0800 726 0101 (informações, reclamações, sugestões e elogios)\n"
+        texto += "<bold>Para pessoas com deficiência auditiva ou de fala:</bold> 0800 726 2492\n"
+        texto += "<bold>Ouvidoria:</bold> 0800 725 7474 (reclamações não solucionadas e denúncias)\n"
+        texto += '<bold>caixa.gov.br</bold>'
+
+        return texto
+      end
+
     end
   end
 end

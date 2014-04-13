@@ -51,7 +51,7 @@ module Brcobranca
         #  @boleto.to_pdf #=> boleto gerado no formato pdf
         def method_missing(m, *args)
           method = m.to_s
-          if method.start_with?("to_")
+          if method.start_with?('to_')
             modelo_generico(self, (args.first || {}).merge!({:formato => method[3..-1]}))
           else
             super
@@ -72,7 +72,7 @@ module Brcobranca
 
           template_path = File.join(File.dirname(__FILE__), '..', '..', 'arquivos', 'templates', 'modelo_generico.eps')
 
-          raise "Não foi possível encontrar o template. Verifique o caminho" unless File.exist?(template_path)
+          raise 'Não foi possível encontrar o template. Verifique o caminho' unless File.exist?(template_path)
 
           modelo_generico_template(doc, boleto, template_path)
           modelo_generico_cabecalho(doc, boleto)
@@ -99,7 +99,7 @@ module Brcobranca
 
           template_path = File.join(File.dirname(__FILE__),'..','..','arquivos','templates','modelo_generico.eps')
 
-          raise "Não foi possível encontrar o template. Verifique o caminho" unless File.exist?(template_path)
+          raise 'Não foi possível encontrar o template. Verifique o caminho' unless File.exist?(template_path)
 
           boletos.each_with_index do |boleto, index|
 
@@ -121,7 +121,7 @@ module Brcobranca
 
         # Define o template a ser usado no boleto
         def modelo_generico_template(doc, boleto, template_path)
-          doc.define_template(:template, template_path, :x => '0.3 cm', :y => "0 cm")
+          doc.define_template(:template, template_path, :x => '0.3 cm', :y => '0 cm')
           doc.use_template :template
 
           doc.define_tags do
@@ -134,35 +134,42 @@ module Brcobranca
         def modelo_generico_cabecalho(doc, boleto)
           #INICIO Primeira parte do BOLETO
           # LOGOTIPO do BANCO
-          doc.image(boleto.logotipo, :x => '0.4 cm', :y => '23.85 cm', :zoom => 80)
+          doc.image(boleto.logotipo, x: '0.4 cm', y: '23.85 cm', zoom: 80)
           # Dados
-          doc.moveto :x => '5.05 cm', :y => '23.95 cm'
+          doc.moveto x: '5.05 cm', y: '23.95 cm'
           doc.show "#{boleto.banco}-#{boleto.banco_dv}", :tag => :enorme
-          doc.moveto :x => '7.5 cm', :y => '23.95 cm'
+          doc.moveto x: '7.5 cm', y: '23.95 cm'
           doc.show boleto.codigo_barras.linha_digitavel, :tag => :grande
-          doc.moveto :x => '0.7 cm', :y => '23 cm'
+          doc.moveto x: '0.7 cm', y: '23 cm'
           doc.show boleto.beneficiario
-          doc.moveto :x => '11 cm', :y => '23 cm'
+          doc.moveto x: '11 cm', y: '23 cm'
           doc.show boleto.agencia_conta_boleto
-          doc.moveto :x => '14.2 cm', :y => '23 cm'
+          doc.moveto x: '14.2 cm', y: '23 cm'
           doc.show boleto.especie
-          doc.moveto :x => '15.7 cm', :y => '23 cm'
+          doc.moveto x: '15.7 cm', y: '23 cm'
           doc.show boleto.quantidade
-          doc.moveto :x => '0.7 cm', :y => '22.2 cm'
+          doc.moveto x: '0.7 cm', y: '22.2 cm'
           doc.show boleto.numero_documento
-          doc.moveto :x => '7 cm', :y => '22.2 cm'
+          doc.moveto x: '7 cm', y: '22.2 cm'
           doc.show "#{boleto.documento_beneficiario.formata_documento}"
-          doc.moveto :x => '12 cm', :y => '22.2 cm'
+          doc.moveto x: '12 cm', y: '22.2 cm'
           doc.show boleto.data_vencimento.to_s_br
-          doc.moveto :x => '16.5 cm', :y => '23 cm'
+          doc.moveto x: '16.5 cm', y: '23 cm'
           doc.show boleto.nosso_numero_boleto
-          doc.moveto :x => '16.5 cm', :y => '22.2 cm'
+          doc.moveto x: '16.5 cm', y: '22.2 cm'
           doc.show boleto.valor_documento.to_currency
 
-          doc.moveto :x => '1.6 cm', :y => '21.0 cm'
+          doc.moveto :x => '1.6 cm', y: '21.0 cm'
           doc.show "#{boleto.pagador} - #{boleto.pagador_documento.formata_documento}"
-          doc.moveto :x => '1.6 cm', :y => '20.7 cm'
+          doc.moveto :x => '1.6 cm', y: '20.7 cm'
           doc.show "#{boleto.pagador_endereco}"
+
+          # Informações do SAC: Artigo 7º do Decreto 6.523, de 31/07/08, e Circular BACEN 3.370/07
+          # Nota: Somente a caixa está solicitando isso atualmente, mas se isso se tornar padrão para outros bancos
+          # Deve ser criado um abstract no boleto base
+          doc.text_area boleto.informacoes_sac, width: '11 cm', height: '2 cm', x: '0.5 cm', y: '20.0 cm',
+                                                row_height: '0.3 cm' if boleto.respond_to?(:informacoes_sac)
+
           #FIM Primeira parte do BOLETO
         end
 
