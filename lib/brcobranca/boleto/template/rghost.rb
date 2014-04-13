@@ -63,7 +63,7 @@ module Brcobranca
         # Retorna um stream pronto para gravação em arquivo.
         #
         # @return [Stream]
-        # @param [Boleto] Instância de uma classe de boleto.
+        # @param [Boleto] boleto Instância de uma classe de boleto.
         # @param [Hash] options Opção para a criação do boleto.
         # @option options [Symbol] :resolucao Resolução em pixels.
         # @option options [Symbol] :formato Formato desejado [:pdf, :jpg, :tif, :png, :ps, :laserjet, ... etc]
@@ -90,7 +90,7 @@ module Brcobranca
         # Retorna um stream para multiplos boletos pronto para gravação em arquivo.
         #
         # @return [Stream]
-        # @param [Array] Instâncias de classes de boleto.
+        # @param [Array] boletos Instâncias de classes de boleto.
         # @param [Hash] options Opção para a criação do boleto.
         # @option options [Symbol] :resolucao Resolução em pixels.
         # @option options [Symbol] :formato Formato desejado [:pdf, :jpg, :tif, :png, :ps, :laserjet, ... etc]

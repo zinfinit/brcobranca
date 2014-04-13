@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 require File.dirname(__FILE__) + '/../spec_helper.rb'
 
-describe 'Muúltiplos boletos' do #:nodoc:[all]
+describe 'Múltiplos boletos' do #:nodoc:[all]
 
   before(:each) do
     @valid_attributes = {
