@@ -52,6 +52,7 @@ Veja a documentação da versão atual em http://rubydoc.info/gems/brcobranca e 
 É necessário ter os seguintes softwares instalados na máquina:
 
 * GhostScript > 8.0
+* Ruby 2.0 ou superior
 
 == INSTALAÇÃO
 
