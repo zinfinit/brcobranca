@@ -17,6 +17,7 @@ describe 'Múltiplos boletos' do #:nodoc:[all]
         :documento_beneficiario => '12345678912',
         :pagador => 'Claudio Pozzebom',
         :pagador_documento => '12345678900',
+        :pagador_endereco => 'Rua alguma coisa, n 171. Cidade-UF',
         :agencia => '4042',
         :conta_corrente => '61900',
         :convenio => 12387989,

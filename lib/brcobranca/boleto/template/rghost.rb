@@ -159,9 +159,9 @@ module Brcobranca
           doc.moveto :x => '16.5 cm', :y => '22.2 cm'
           doc.show boleto.valor_documento.to_currency
 
-          doc.moveto :x => '1.5 cm', :y => '20.9 cm'
+          doc.moveto :x => '1.6 cm', :y => '21.0 cm'
           doc.show "#{boleto.pagador} - #{boleto.pagador_documento.formata_documento}"
-          doc.moveto :x => '1.5 cm', :y => '20.6 cm'
+          doc.moveto :x => '1.6 cm', :y => '20.7 cm'
           doc.show "#{boleto.pagador_endereco}"
           #FIM Primeira parte do BOLETO
         end
@@ -179,11 +179,13 @@ module Brcobranca
           doc.show boleto.local_pagamento
           doc.moveto :x => '16.5 cm', :y => '16 cm'
           doc.show boleto.data_vencimento.to_s_br if boleto.data_vencimento
-          doc.moveto :x => '0.7 cm', :y => '15.2 cm'
-          doc.show boleto.beneficiario
 
-          doc.moveto :x => '11.4 cm', :y => '15.2 cm'
+          doc.moveto :x => '2.0 cm', :y => '15.58 cm'
+          doc.show boleto.beneficiario
+          doc.moveto :x => '11.4 cm', :y => '15.58 cm'
           doc.show "CNPJ: #{boleto.documento_beneficiario.formata_documento}"
+          doc.moveto :x => '0.7 cm', :y => '15.2 cm'
+          doc.show boleto.beneficiario_endereco
 
           doc.moveto :x => '16.5 cm', :y => '15.2 cm'
           doc.show boleto.agencia_conta_boleto
@@ -205,10 +207,10 @@ module Brcobranca
           doc.show boleto.especie
           doc.moveto :x => '8 cm', :y => '13.5 cm'
           doc.show boleto.quantidade
-          # doc.moveto :x => '11 cm' , :y => '13.5 cm'
-          # doc.show boleto.valor.to_currency
           doc.moveto :x => '16.5 cm', :y => '13.5 cm'
           doc.show boleto.valor_documento.to_currency
+
+          # Instruções de processamento
           doc.moveto :x => '0.7 cm', :y => '12.7 cm'
           doc.show boleto.instrucao1
           doc.moveto :x => '0.7 cm', :y => '12.3 cm'
@@ -221,6 +223,8 @@ module Brcobranca
           doc.show boleto.instrucao5
           doc.moveto :x => '0.7 cm', :y => '10.7 cm'
           doc.show boleto.instrucao6
+
+          # Dados pagador
           doc.moveto :x => '1.2 cm', :y => '8.8 cm'
           doc.show boleto.pagador if boleto.pagador
           doc.moveto :x => '1.2 cm', :y => '8.4 cm'

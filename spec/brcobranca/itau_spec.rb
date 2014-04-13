@@ -16,6 +16,7 @@ describe Brcobranca::Boleto::Itau do
         :documento_beneficiario => '12345678912',
         :pagador => 'Claudio Pozzebom',
         :pagador_documento => '12345678900',
+        :pagador_endereco => 'Rua alguma coisa, n 171. Cidade-UF',
         :agencia => '0810',
         :conta_corrente => '53678',
         :convenio => 12387,
@@ -132,7 +133,7 @@ describe Brcobranca::Boleto::Itau do
   it 'Não permitir gerar boleto com atributos inválido' do
     boleto_novo = Brcobranca::Boleto::Itau.new
     lambda { boleto_novo.codigo_barras }.should raise_error(Brcobranca::BoletoInvalido)
-    boleto_novo.errors.count.should eql(3)
+    boleto_novo.should_not be_valid
   end
 
   it 'Montar agencia_conta_corrente_dv' do

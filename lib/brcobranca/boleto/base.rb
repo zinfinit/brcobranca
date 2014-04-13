@@ -15,38 +15,58 @@ module Brcobranca
 
       # <b>REQUERIDO</b>: Número do convênio/contrato do cliente junto ao banco emissor
       attr_accessor :convenio
+
       # <b>REQUERIDO</b>: Tipo de moeda utilizada (Real(R$) e igual a 9)
       attr_accessor :moeda
+
       # <b>REQUERIDO</b>: Carteira utilizada
       attr_accessor :carteira
+
       # <b>OPCIONAL</b>: Variacao da carteira(opcional para a maioria dos bancos)
       attr_accessor :variacao
+
       # <b>OPCIONAL</b>: Data de processamento do boleto, geralmente igual a data_documento
       attr_accessor :data_processamento
+
       # <b>REQUERIDO</b>: Número de dias a vencer
       attr_accessor :dias_vencimento
+
       # <b>REQUERIDO</b>: Quantidade de boleto(padrão = 1)
       attr_accessor :quantidade
+
       # <b>REQUERIDO</b>: Valor do boleto
       attr_accessor :valor
+
       # <b>REQUERIDO</b>: Número da agencia sem <b>Digito Verificador</b>
       attr_accessor :agencia
+
       # <b>REQUERIDO</b>: Número da conta corrente sem <b>Digito Verificador</b>
       attr_accessor :conta_corrente
+
       # <b>REQUERIDO</b>: Nome do proprietario da conta corrente
       attr_accessor :beneficiario
+
+      # <b>OPCIONAL</b>: Endereco do proprietario da conta corrente
+      attr_accessor :beneficiario_endereco
+
       # <b>REQUERIDO</b>: Documento do proprietario da conta corrente (CPF ou CNPJ)
       attr_accessor :documento_beneficiario
+
       # <b>OPCIONAL</b>: Número sequencial utilizado para identificar o boleto
       attr_accessor :numero_documento
+
       # <b>REQUERIDO</b>: Símbolo da moeda utilizada (R$ no brasil)
       attr_accessor :especie
+
       # <b>REQUERIDO</b>: Tipo do documento (Geralmente DM que quer dizer Duplicata Mercantil)
       attr_accessor :especie_documento
+
       # <b>REQUERIDO</b>: Data em que foi emitido o boleto
       attr_accessor :data_documento
+
       # <b>OPCIONAL</b>: Código utilizado para identificar o tipo de serviço cobrado
       attr_accessor :codigo_servico
+
       # <b>OPCIONAL</b>: Utilizado para mostrar alguma informação ao pagador
       attr_accessor :instrucao1
       # <b>OPCIONAL</b>: Utilizado para mostrar alguma informação ao pagador
@@ -61,19 +81,25 @@ module Brcobranca
       attr_accessor :instrucao6
       # <b>OPCIONAL</b>: Utilizado para mostrar alguma informação ao pagador
       attr_accessor :instrucao7
+
       # <b>REQUERIDO</b>: Informação sobre onde o pagador podera efetuar o pagamento
       attr_accessor :local_pagamento
+
       # <b>REQUERIDO</b>: O título de cobrança foi reconhecido (assinado) pelo Pagador? (A = aceito, N = não)
       attr_accessor :aceite
-      # <b>REQUERIDO</b>: Nome da pessoa que receberá o boleto
+
+      # <b>REQUERIDO</b>: Nome da pessoa que receberá o boleto (Lei Federal no 12.039, de 01/10/2009)
       attr_accessor :pagador
-      # <b>OPCIONAL</b>: Endereco da pessoa que receberá o boleto
+
+      # <b>REQUERIDO</b>: Endereco da pessoa que receberá o boleto (Lei Federal no 12.039, de 01/10/2009)
       attr_accessor :pagador_endereco
-      # <b>REQUERIDO</b>: Documento da pessoa que receberá o boleto
+
+      # <b>REQUERIDO</b>: Documento da pessoa que receberá o boleto (Lei Federal no 12.039, de 01/10/2009)
       attr_accessor :pagador_documento
 
       # Validações
-      validates_presence_of :agencia, :conta_corrente, :moeda, :especie_documento, :especie, :aceite, :numero_documento, :message => 'não pode estar em branco.'
+      validates_presence_of :agencia, :conta_corrente, :moeda, :especie_documento, :especie, :aceite, :numero_documento,
+                            :pagador, :pagador_endereco, :pagador_documento, :message => 'não pode estar em branco.'
       validates_numericality_of :convenio, :agencia, :conta_corrente, :numero_documento, :message => 'não é um número.', :allow_nil => true
 
       # Nova instancia da classe Base
@@ -96,7 +122,7 @@ module Brcobranca
       # Logotipo do banco
       # @return [Path] Caminho para o arquivo de logotipo do banco.
       def logotipo
-        File.join(File.dirname(__FILE__),'..','arquivos','logos',"#{class_name}.eps")
+        File.join(File.dirname(__FILE__), '..', 'arquivos', 'logos', "#{class_name}.eps")
       end
 
       # Dígito verificador do banco

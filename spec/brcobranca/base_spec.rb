@@ -18,6 +18,7 @@ module Brcobranca #:nodoc:[all]
             :documento_beneficiario => '12345678912',
             :pagador => 'Claudio Pozzebom',
             :pagador_documento => '12345678900',
+            :pagador_endereco => 'Rua alguma coisa, n 171. Cidade-UF',
             :agencia => '4042',
             :conta_corrente => '61900',
             :convenio => 12387989,
@@ -58,6 +59,7 @@ module Brcobranca #:nodoc:[all]
         boleto_novo.documento_beneficiario.should eql('12345678912')
         boleto_novo.pagador.should eql('Claudio Pozzebom')
         boleto_novo.pagador_documento.should eql('12345678900')
+        boleto_novo.pagador_endereco.should eql('Rua alguma coisa, n 171. Cidade-UF')
         boleto_novo.conta_corrente.should eql('0061900')
         boleto_novo.agencia.should eql('4042')
         boleto_novo.convenio.should eql(12387989)

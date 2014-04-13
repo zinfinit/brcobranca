@@ -16,6 +16,7 @@ describe Brcobranca::Boleto::Caixa do #:nodoc:[all]
         :documento_beneficiario => '04092706000181',
         :pagador => 'João Paulo Barbosa',
         :pagador_documento => '77777777777',
+        :pagador_endereco => 'Rua alguma coisa, n 171. Cidade-UF',
         :agencia => '1825',
         :conta_corrente => '0000528',
         :convenio => '245274',
