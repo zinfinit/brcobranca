@@ -17,6 +17,9 @@ module Brcobranca
           :beneficiario => '4'
       }
 
+      # <b>opcional</b>: Valor do documento
+      attr_writer :valor_documento
+
       # Validações
       validates_length_of :agencia, :maximum => 4, :message => 'deve ser menor ou igual a 4 dígitos.'
       validates_length_of :carteira, :is => 2, :message => 'deve possuir 2 dígitos.'
@@ -36,6 +39,17 @@ module Brcobranca
 
         super(campos)
       end
+
+      # Valor total do documento
+      # @return [Float]
+      def valor_documento
+        if @valor_documento.present?
+          @valor_documento.to_f
+        else
+          super
+        end
+      end
+
 
       # Código do banco emissor
       # @return [String]
